@@ -3,24 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pick a Look for Maya's Site</title>
+<title>Pick a Look for Maya's Site — Round 2</title>
 <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     body {
         font-family: 'Segoe UI', system-ui, sans-serif;
-        background: linear-gradient(160deg, #fff6fb 0%, #f0f7ff 60%, #fffdf0 100%);
-        color: #2d2a26;
+        background: linear-gradient(165deg, #dff0ff 0%, #cfe7ff 55%, #eef8ff 100%);
+        color: #22315c;
         min-height: 100vh;
         padding: 2rem 1.2rem 4rem;
     }
+    .cursive { font-family: 'Lucida Handwriting', 'Segoe Script', 'Snell Roundhand', 'Apple Chancery', cursive; font-weight: normal; }
     .wrap { max-width: 1100px; margin: 0 auto; text-align: center; }
     h1 {
-        font-family: Georgia, 'Times New Roman', serif;
         font-size: clamp(2rem, 6vw, 3.2rem);
-        margin-bottom: .4rem;
+        margin-bottom: .5rem;
+        display: inline-flex; align-items: center; gap: .7rem;
     }
-    .sub { font-size: 1.15rem; color: #6b6560; margin-bottom: .6rem; }
-    .hint { font-size: 1rem; color: #999; margin-bottom: 2.5rem; }
+    h1 svg { flex: none; }
+    .sub { font-size: 1.12rem; color: #4d6191; margin-bottom: .5rem; max-width: 620px; margin-left:auto; margin-right:auto; }
+    .hint { font-size: 1rem; color: #7d8db5; margin-bottom: 2.4rem; }
     .options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
     @media (max-width: 820px) { .options { grid-template-columns: 1fr; } }
     a.option {
@@ -30,12 +32,12 @@
         background: white;
         border-radius: 22px;
         overflow: hidden;
-        box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+        box-shadow: 0 6px 30px rgba(20, 50, 110, 0.12);
         transition: box-shadow .25s ease, outline .1s;
         outline: 4px solid transparent;
     }
-    a.option:hover, a.option:focus { box-shadow: 0 14px 44px rgba(0,0,0,0.15); outline-color: #ffd6ec; }
-    .preview { height: 210px; position: relative; overflow: hidden; }
+    a.option:hover, a.option:focus { box-shadow: 0 14px 44px rgba(20, 50, 110, 0.2); outline-color: #ffd23f; }
+    .preview { height: 210px; position: relative; overflow: hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.6rem; }
     .badge {
         position: absolute; top: 12px; left: 12px;
         background: rgba(255,255,255,0.92);
@@ -43,104 +45,121 @@
         padding: .35rem .9rem;
         font-weight: 700;
         font-size: .95rem;
+        color: #22315c;
         box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     }
-    /* mini-preview A: museum */
-    .prev-a { background: #faf7f2; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.7rem; }
-    .prev-a .title { font-family: Georgia, serif; font-size: 1.35rem; color:#1a1816; letter-spacing:.02em; }
-    .prev-a .rule { width: 46px; height: 2px; background: #c9a96e; }
-    .prev-a .frames { display:flex; gap:.7rem; }
-    .prev-a .frame { width: 72px; height: 54px; background:#fff; padding:5px; border:1px solid #e5ddcf; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
-    .prev-a .frame img { width:100%; height:100%; object-fit:cover; display:block; }
-    /* mini-preview B: sketchbook */
-    .prev-b { background: #ffffff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.65rem;
-              background-image: linear-gradient(#eef4ff 1px, transparent 1px); background-size: 100% 22px; }
-    .prev-b .title { font-weight: 800; font-size: 1.5rem; font-family:'Segoe Print','Comic Sans MS',cursive; }
-    .prev-b .title span:nth-child(1){color:#e53935}.prev-b .title span:nth-child(2){color:#fb8c00}.prev-b .title span:nth-child(3){color:#fdd835}.prev-b .title span:nth-child(4){color:#43a047}.prev-b .title span:nth-child(5){color:#1e88e5}.prev-b .title span:nth-child(6){color:#8e24aa}
-    .prev-b .cards { display:flex; gap:.7rem; }
-    .prev-b .card { width: 72px; height: 54px; border-radius: 10px; border: 3px solid; padding:3px; background:white; }
-    .prev-b .card:nth-child(1){ border-color:#ef5350; transform: rotate(-4deg);} .prev-b .card:nth-child(2){ border-color:#42a5f5; transform: rotate(2deg);} .prev-b .card:nth-child(3){ border-color:#ffca28; transform: rotate(-2deg);}
-    .prev-b .card img { width:100%; height:100%; object-fit:cover; border-radius: 6px; display:block; }
-    /* mini-preview C: dream */
-    .prev-c { background: linear-gradient(160deg, #ffd6ec 0%, #e3d5ff 50%, #cdeaff 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.7rem; }
-    .prev-c .title { font-weight: 300; font-size: 1.45rem; letter-spacing: .12em; color: #6a4d8f; }
-    .prev-c .bubbles { display:flex; gap:.7rem; }
-    .prev-c .bubble { width: 72px; height: 54px; background: rgba(255,255,255,0.75); border-radius: 16px; padding:5px; box-shadow: 0 4px 14px rgba(150,110,200,0.25); }
-    .prev-c .bubble img { width:100%; height:100%; object-fit:cover; border-radius: 12px; display:block; }
+    .preview .pbolt { position:absolute; }
+    .preview .sheet-mini {
+        width: 76%;
+        border-radius: 6px;
+        padding: .8rem .6rem .7rem;
+        background-image: repeating-linear-gradient(to bottom, var(--mp) 0 14px, var(--ml) 14px 15px);
+        background-color: var(--mp);
+        box-shadow: 0 6px 18px rgba(10, 30, 80, 0.28);
+        text-align: center;
+    }
+    .sheet-mini .title { font-size: 1.15rem; color: var(--mi); }
+    .sheet-mini .cards { display:flex; gap:.55rem; justify-content:center; margin-top:.55rem; }
+    .sheet-mini .card { width: 62px; height: 46px; background: white; padding: 3px; border-radius: 3px; box-shadow: 0 3px 8px rgba(10,30,80,0.25); }
+    .sheet-mini .card:nth-child(1) { transform: rotate(-4deg); }
+    .sheet-mini .card:nth-child(3) { transform: rotate(3deg); }
+    .sheet-mini .card img { width:100%; height:100%; object-fit:cover; display:block; border-radius:2px; }
+    .prev-4 { background: linear-gradient(170deg, #a5d8ff, #cdeaff); --mp:#fffefb; --ml:#d9e8f8; --mi:#274472; }
+    .prev-5 { background: linear-gradient(170deg, #2f63de, #1f4cbb); --mp:#eaf3ff; --ml:#c5d9f3; --mi:#1b2a5e; }
+    .prev-6 { background: radial-gradient(ellipse at 50% -20%, #24408f, #101e4e); --mp:#fffefb; --ml:#d9e8f8; --mi:#274472; }
     .info { padding: 1.4rem 1.4rem 1.7rem; }
     .info h2 { font-size: 1.35rem; margin-bottom: .35rem; }
-    .info p { color: #6b6560; font-size: .98rem; margin-bottom: 1.1rem; min-height: 2.6em; }
+    .info p { color: #5d76a5; font-size: .98rem; margin-bottom: 1.1rem; min-height: 2.6em; }
     .go {
         display: inline-flex; align-items: center; gap: .5rem;
-        background: #2d2a26; color: white;
+        background: #22315c; color: white;
         border-radius: 999px; padding: .8rem 1.7rem;
         font-weight: 700; font-size: 1.05rem;
     }
     .go svg { width: 18px; height: 18px; }
+    .old-looks { margin-top: 3rem; font-size: .95rem; color: #7d8db5; }
+    .old-looks a { color: #4d6191; font-weight: 600; }
 </style>
 </head>
 <body>
 <div class="wrap">
-    <h1>Maya, pick your favorite look!</h1>
-    <p class="sub">Your art is the same in all three &mdash; the clothes the website wears change.</p>
+    <h1>
+        <svg width="34" height="34" viewBox="0 0 24 24" style="rotate:-12deg" aria-hidden="true"><path d="M13 2 4.5 13.5H11L9 22l9.5-12H12L13 2Z" fill="#ffd23f" stroke="#35507e" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        Maya, here are your NEW looks!
+        <svg width="34" height="34" viewBox="0 0 24 24" style="rotate:12deg" aria-hidden="true"><path d="M13 2 4.5 13.5H11L9 22l9.5-12H12L13 2Z" fill="#ffd23f" stroke="#35507e" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    </h1>
+    <p class="sub">Dad heard you: a notebook like Look 2, blue like the bottom of Look 3, way more thunderbolts &mdash; and curly writing only on &ldquo;Maya's World.&rdquo;</p>
     <p class="hint">Tap a card to see the whole thing, big.</p>
     <div class="options">
-        <a class="option" href="option-a.html">
-            <div class="preview prev-a">
-                <span class="badge">Look 1</span>
-                <div class="title">Maya Ductan</div>
-                <div class="rule"></div>
-                <div class="frames">
-                    <div class="frame"><img src="../images/painting4.png" alt=""></div>
-                    <div class="frame"><img src="../images/painting11.png" alt=""></div>
-                    <div class="frame"><img src="../images/painting26.png" alt=""></div>
+        <a class="option" href="round2-a.html">
+            <div class="preview prev-4">
+                <span class="badge">Look 4</span>
+                <svg class="pbolt" style="top:14px; right:16px; rotate:14deg" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4.5 13.5H11L9 22l9.5-12H12L13 2Z" fill="#ffd23f" stroke="#35507e" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                <div class="sheet-mini">
+                    <div class="title cursive">Maya's World</div>
+                    <div class="cards">
+                        <div class="card"><img src="../images/painting27.png" alt=""></div>
+                        <div class="card"><img src="../images/painting22.png" alt=""></div>
+                        <div class="card"><img src="../images/painting20.png" alt=""></div>
+                    </div>
                 </div>
             </div>
             <div class="info">
-                <h2>The Fancy Museum</h2>
-                <p>Quiet and elegant, like a real art museum with golden frames.</p>
+                <h2>The Blue Sky Notebook</h2>
+                <p>A white notebook floating on a bright blue sky, thunderbolts everywhere.</p>
                 <span class="go">See it
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </span>
             </div>
         </a>
-        <a class="option" href="option-b.html">
-            <div class="preview prev-b">
-                <span class="badge">Look 2</span>
-                <div class="title"><span>M</span><span>a</span><span>y</span><span>a</span><span>!</span><span>!</span></div>
-                <div class="cards">
-                    <div class="card"><img src="../images/painting1.png" alt=""></div>
-                    <div class="card"><img src="../images/painting27.png" alt=""></div>
-                    <div class="card"><img src="../images/painting14.png" alt=""></div>
+        <a class="option" href="round2-b.html">
+            <div class="preview prev-5">
+                <span class="badge">Look 5</span>
+                <svg class="pbolt" style="top:14px; right:16px; rotate:14deg" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4.5 13.5H11L9 22l9.5-12H12L13 2Z" fill="#ffd23f" stroke="#1b2a5e" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                <div class="sheet-mini">
+                    <div class="title cursive">Maya's World</div>
+                    <div class="cards">
+                        <div class="card"><img src="../images/painting1.png" alt=""></div>
+                        <div class="card"><img src="../images/painting5.png" alt=""></div>
+                        <div class="card"><img src="../images/painting14.png" alt=""></div>
+                    </div>
                 </div>
             </div>
             <div class="info">
-                <h2>The Rainbow Sketchbook</h2>
-                <p>Bright and silly, like your paintings jumped onto notebook paper.</p>
+                <h2>The Super Blue Notebook</h2>
+                <p>EXTRA blue: even the notebook paper is blue.</p>
                 <span class="go">See it
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </span>
             </div>
         </a>
-        <a class="option" href="option-c.html">
-            <div class="preview prev-c">
-                <span class="badge">Look 3</span>
-                <div class="title">MAYA</div>
-                <div class="bubbles">
-                    <div class="bubble"><img src="../images/painting5.png" alt=""></div>
-                    <div class="bubble"><img src="../images/painting22.png" alt=""></div>
-                    <div class="bubble"><img src="../images/painting20.png" alt=""></div>
+        <a class="option" href="round2-c.html">
+            <div class="preview prev-6">
+                <span class="badge">Look 6</span>
+                <svg class="pbolt" style="top:14px; right:16px; rotate:14deg" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4.5 13.5H11L9 22l9.5-12H12L13 2Z" fill="#ffd23f" stroke="#fff7dc" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                <div class="sheet-mini">
+                    <div class="title cursive">Maya's World</div>
+                    <div class="cards">
+                        <div class="card"><img src="../images/painting22.png" alt=""></div>
+                        <div class="card"><img src="../images/painting27.png" alt=""></div>
+                        <div class="card"><img src="../images/painting20.png" alt=""></div>
+                    </div>
                 </div>
             </div>
             <div class="info">
-                <h2>The Pink Sky Dream</h2>
-                <p>Soft and floaty, like your Pink Sky Ribbons painting became a website.</p>
+                <h2>The Starry Night Notebook</h2>
+                <p>A dark blue night sky with glowing thunderbolts and stars.</p>
                 <span class="go">See it
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </span>
             </div>
         </a>
     </div>
+    <p class="old-looks">Want to peek at the first three looks again?
+        <a href="option-a.html">Look 1</a> &middot;
+        <a href="option-b.html">Look 2</a> &middot;
+        <a href="option-c.html">Look 3</a>
+    </p>
 </div>
 </body>
 </html>
