@@ -2,3 +2,6 @@ _RESUME.md
 scripts/
 CLAUDE.md
 /photos/
+
+# personal secrets live here, never in git or the user environment
+.env
