@@ -715,8 +715,10 @@
             right: 15%;
         }
     </style>
+<link rel="stylesheet" href="assets/accessibility.css">
 </head>
 <body>
+<a class="skip-link" href="#gallery">Skip to artwork</a>
 
     <!-- Navigation -->
     <nav id="navbar">
@@ -1347,101 +1349,7 @@
         </div>
     </div>
 
-    <script>
-        // Scroll-triggered animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.artwork-card').forEach(card => observer.observe(card));
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 80);
-        });
-
-        // Lightbox
-        const artworks = [
-            { src: 'images/painting1.png', title: 'Red Snow', sub: 'No. 01 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting2.png', title: 'Maya & Isaac', sub: 'No. 02 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting3.png', title: 'Color Mix', sub: 'No. 03 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting4.png', title: 'Rainbow Storm', sub: 'No. 04 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting5.png', title: 'Pink Sky Ribbons', sub: 'No. 05 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting6.png', title: 'Our Names', sub: 'No. 06 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting7.png', title: 'Light Scribble', sub: 'No. 07 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting8.png', title: 'The Beach', sub: 'No. 08 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting9.png', title: 'I Love You, Mom', sub: 'No. 09 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting10.png', title: 'Blank Sheet', sub: 'No. 10 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting11.png', title: 'Sky Kingdom', sub: 'No. 11 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting12.png', title: 'Blood Kingdom', sub: 'No. 12 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting13.png', title: 'Star Fortress', sub: 'No. 13 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting14.png', title: 'Shape Garden', sub: 'No. 14 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting15.png', title: 'Hearts & Red', sub: 'No. 15 \u00b7 Digital Drawing \u00b7 2026' },
-            { src: 'images/painting16.png', title: 'Twin Stars', sub: 'No. 16 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting17.png', title: 'Color Tornado', sub: 'No. 17 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting18.png', title: 'Red Universe', sub: 'No. 18 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting19.png', title: 'Red & Blue Tangled Ribbons', sub: 'No. 19 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting20.png', title: 'Sky Heart', sub: 'No. 20 \u00b7 Digital Drawing \u00b7 2026' },
-            { src: 'images/painting21.png', title: 'Scribbles', sub: 'No. 21 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting22.png', title: 'Starry Heart', sub: 'No. 22 \u00b7 Digital Drawing \u00b7 2026' },
-            { src: 'images/painting23.png', title: 'Dad', sub: 'No. 23 \u00b7 Digital Drawing \u00b7 2026' },
-            { src: 'images/painting24.png', title: 'Stars', sub: 'No. 24 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting25.png', title: 'Blue Storm on Red', sub: 'No. 25 \u00b7 Digital Painting \u00b7 2026' },
-            { src: 'images/painting26.png', title: 'Heart Family', sub: 'No. 26 \u00b7 Digital Drawing \u00b7 2026' },
-            { src: 'images/painting27.png', title: 'Lightning Bolts', sub: 'No. 27 \u00b7 Digital Drawing \u00b7 2026' },
-            { src: 'images/painting28.png', title: 'Paint Puddles', sub: 'No. 28 \u00b7 Digital Painting \u00b7 2026' },
-        ];
-
-        let currentIndex = 0;
-
-        function openLightbox(index) {
-            currentIndex = index;
-            updateLightbox();
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function updateLightbox() {
-            const art = artworks[currentIndex];
-            document.getElementById('lightbox-img').src = art.src;
-            document.getElementById('lightbox-img').alt = art.title;
-            document.getElementById('lightbox-title').textContent = art.title;
-            document.getElementById('lightbox-sub').textContent = art.sub;
-        }
-
-        function prevImage(e) {
-            e.stopPropagation();
-            currentIndex = (currentIndex - 1 + artworks.length) % artworks.length;
-            updateLightbox();
-        }
-
-        function nextImage(e) {
-            e.stopPropagation();
-            currentIndex = (currentIndex + 1) % artworks.length;
-            updateLightbox();
-        }
-
-        // Close lightbox on background click
-        document.getElementById('lightbox').addEventListener('click', closeLightbox);
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (!document.getElementById('lightbox').classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + artworks.length) % artworks.length; updateLightbox(); }
-            if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % artworks.length; updateLightbox(); }
-        });
-    </script>
+    <script src="assets/gallery.js"></script>
 
 </body>
 </html>

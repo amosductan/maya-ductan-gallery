@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maya Ductan | Young Artist Gallery</title>
+    <meta name="description" content="The official art gallery of Maya Ductan, a young artist exploring color, energy, and imagination.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #faf7f2;
+            --warm-white: #fff9f0;
+            --charcoal: #2d2a26;
+            --soft-black: #1a1816;
+            --gold: #c9a96e;
+            --gold-light: #e8d5a8;
+            --rose: #d4a0a0;
+            --sage: #a8b5a0;
+            --lavender: #b8a9c9;
+            --sky: #9ec5d4;
+            --peach: #e8c4a0;
+            --gallery-bg: #f5f0e8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(135deg, #fce4ec 0%, #e8eaf6 25%, #e0f7fa 50%, #fff9c4 75%, #fce4ec 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(212, 160, 160, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(158, 197, 212, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(184, 169, 201, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.3s forwards;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700;
+            color: var(--soft-black);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.5s forwards;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.7s forwards;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: #5a5652;
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.9s forwards;
+        }
+
+        .scroll-hint {
+            opacity: 0;
+            animation: fadeUp 1s ease 1.2s forwards;
+        }
+
+        .hero-cta {
+            opacity: 0;
+            animation: fadeUp 1s ease 1.4s forwards;
+            margin-top: 1.6rem;
+        }
+        .hero-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.75rem 1.4rem;
+            border-radius: 999px;
+            border: 1.5px solid var(--gold);
+            color: #a8822f;
+            background: rgba(255,255,255,0.55);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+        }
+        .hero-cta a:hover {
+            background: var(--gold);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .hero-cta svg { width: 18px; height: 18px; }
+        .scroll-hint a {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            transform: rotate(45deg);
+            margin-top: 0.8rem;
+            animation: bounce 2s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: rotate(45deg) translateY(0); }
+            50% { transform: rotate(45deg) translateY(8px); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            padding: 0.8rem 2rem;
+        }
+
+        .nav-logo {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ===== GALLERY SECTION ===== */
+        .gallery-section {
+            padding: 6rem 2rem;
+            background: var(--gallery-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: var(--soft-black);
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1.5rem auto 0;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        /* Artwork Card */
+        .artwork-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .artwork-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
+        }
+
+        .artwork-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 50px rgba(0,0,0,0.12);
+        }
+
+        /* Featured layout — painting 1 full width */
+        .artwork-card.featured {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+        }
+
+        /* Side-by-side layout for pairs */
+        .gallery-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .artwork-image-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .artwork-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .artwork-info {
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .artwork-number {
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 0.4rem;
+        }
+
+        .artwork-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--soft-black);
+            margin-bottom: 0.6rem;
+        }
+
+        .artwork-medium {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .artwork-desc {
+            font-size: 0.95rem;
+            color: #6b6560;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .color-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 1.2rem;
+        }
+
+        .color-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(0,0,0,0.08);
+        }
+
+        /* Non-featured cards */
+        .artwork-card:not(.featured) .artwork-image-wrap {
+            height: 320px;
+        }
+
+        .featured .artwork-image-wrap {
+            min-height: 400px;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            padding: 8rem 2rem;
+            background: var(--warm-white);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, #fce4ec, #e8eaf6, #e0f7fa, #fff9c4);
+            background-size: 300% 300%;
+            animation: gradientShift 8s ease infinite;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .about-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--charcoal);
+            line-height: 1.9;
+            font-weight: 400;
+        }
+
+        .about-text em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .about-quote {
+            margin-top: 3rem;
+            padding: 2rem;
+            border-left: 3px solid var(--gold-light);
+            text-align: left;
+        }
+
+        .about-quote p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #7a7570;
+            line-height: 1.8;
+        }
+
+        .about-quote cite {
+            display: block;
+            margin-top: 1rem;
+            font-family: 'Caveat', cursive;
+            font-style: normal;
+            font-size: 1.1rem;
+            color: var(--gold);
+        }
+
+        .artist-details {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .artist-detail {
+            text-align: center;
+        }
+
+        .artist-detail-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--soft-black);
+        }
+
+        .artist-detail-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #999;
+            margin-top: 0.3rem;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            background: rgba(10, 8, 6, 0.92);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            position: relative;
+            cursor: default;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+        }
+
+        .lightbox.active .lightbox-content img {
+            transform: scale(1);
+        }
+
+        .lightbox-caption {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .lightbox-caption h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .lightbox-caption p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.3rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: none;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: none;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        .lightbox-prev { left: 2rem; }
+        .lightbox-next { right: 2rem; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--soft-black);
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-name {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-heart {
+            color: var(--rose);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .artwork-card.featured {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-pair {
+                grid-template-columns: 1fr;
+            }
+
+            .featured .artwork-image-wrap {
+                min-height: 280px;
+            }
+
+            .artwork-info {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            .nav-links a {
+                font-size: 0.72rem;
+                letter-spacing: 0.06em;
+            }
+            nav {
+                padding: 0.9rem 1.1rem;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .artwork-card:not(.featured) .artwork-image-wrap {
+                height: 220px;
+            }
+
+            .artist-details {
+                gap: 2rem;
+            }
+
+            .lightbox-nav {
+                display: none;
+            }
+
+            .artwork-info {
+                padding: 1.2rem;
+            }
+
+            .artwork-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Paint splatter decorations */
+        .splatter {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .hero .splatter:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--rose);
+            top: 10%;
+            left: -5%;
+        }
+
+        .hero .splatter:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: var(--sky);
+            bottom: 15%;
+            right: 5%;
+        }
+
+        .hero .splatter:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            background: var(--lavender);
+            top: 20%;
+            right: 15%;
+        }
+    </style>
+<link rel="stylesheet" href="assets/accessibility.css">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/full-bleed.css">
+</head>
+<body class="maya">
+<a class="skip-link" href="#gallery">Skip to artwork</a>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">Maya D.</a>
+        <ul class="nav-links">
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="travel/">Travel</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img class="hero-art" src="assets/art/painting27.webp" alt="Lightning Bolts by Maya Ductan" fetchpriority="high">
+        <div class="hero-copy"><h1>Maya's World</h1><p>Art, little discoveries, and a whole lot of blue.</p><div class="hero-actions"><a href="#gallery">Explore my art</a><a href="travel/">Places I've been</a></div></div>
+        <span class="art-credit">Lightning Bolts / Maya Ductan</span>
+    </section>
+    <div class="concept-note">A new look to try together. Maya gets the final say. <a href="index.html">See the current look</a></div>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-header">
+            <p class="section-label">The Collection</p>
+            <h2 class="section-title">Original Works</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- Featured Painting 1 -->
+            <div class="artwork-card featured" onclick="openLightbox(0)">
+                <div class="artwork-image-wrap">
+                    <img src="assets/art/painting1.webp" alt="Red Snow by Maya Ductan" loading="lazy">
+                </div>
+                <div class="artwork-info">
+                    <span class="artwork-number">No. 01</span>
+                    <h3 class="artwork-title">Red Snow</h3>
+                    <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                    <p class="artwork-desc">A bold explosion of color and motion against a vibrant red canvas. White, blue, yellow, and green strokes collide with electric energy, creating a dynamic composition that pulses with life.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background: #e53935;"></span>
+                        <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                        <span class="color-dot" style="background: #2196f3;"></span>
+                        <span class="color-dot" style="background: #ffeb3b;"></span>
+                        <span class="color-dot" style="background: #4caf50;"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pair: Paintings 2 & 3 -->
+            <div class="gallery-pair">
+                <div class="artwork-card" onclick="openLightbox(1)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting2.webp" alt="Maya and Isaac by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 02</span>
+                        <h3 class="artwork-title">Maya & Isaac</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Big sister Maya and her little brother Isaac stand together against a bright blue sky filled with falling snow. A loving portrait of sibling bonds drawn with joyful, confident lines.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #29b6f6;"></span>
+                            <span class="color-dot" style="background: #fdd835;"></span>
+                            <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openLightbox(2)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting3.webp" alt="Color Mix by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 03</span>
+                        <h3 class="artwork-title">Color Mix</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Swirling loops of orange, purple, blue, and green dance across a soft pink landscape. A lush, joyful celebration of color that feels like walking through a garden in full bloom.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #f8bbd0;"></span>
+                            <span class="color-dot" style="background: #ff9800;"></span>
+                            <span class="color-dot" style="background: #5c6bc0;"></span>
+                            <span class="color-dot" style="background: #66bb6a;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Painting 4 -->
+            <div class="artwork-card featured" onclick="openLightbox(3)">
+                <div class="artwork-info">
+                    <span class="artwork-number">No. 04</span>
+                    <h3 class="artwork-title">Rainbow Storm</h3>
+                    <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                    <p class="artwork-desc">A whirlwind of every color in the rainbow sweeps across a white canvas. Bold blue arcs, orange streaks, purple waves, and a mysterious dark butterfly at the center &mdash; pure abstract expressionist energy from a fearless young painter.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background: #42a5f5;"></span>
+                        <span class="color-dot" style="background: #ab47bc;"></span>
+                        <span class="color-dot" style="background: #ff7043;"></span>
+                        <span class="color-dot" style="background: #66bb6a;"></span>
+                        <span class="color-dot" style="background: #1a1a1a;"></span>
+                    </div>
+                </div>
+                <div class="artwork-image-wrap">
+                    <img src="assets/art/painting4.webp" alt="Rainbow Storm by Maya Ductan" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Pair: Paintings 5 & 6 -->
+            <div class="gallery-pair">
+                <div class="artwork-card" onclick="openLightbox(4)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting5.webp" alt="Pink Sky Ribbons by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 05</span>
+                        <h3 class="artwork-title">Pink Sky Ribbons</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Soft pink and blue stripes create a dreamy sky, while flowing purple ribbons glide across the surface like clouds at sunset. A gentle, meditative piece that captures a quiet moment of wonder.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #f48fb1;"></span>
+                            <span class="color-dot" style="background: #81d4fa;"></span>
+                            <span class="color-dot" style="background: #9c27b0;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openLightbox(5)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting6.webp" alt="Our Names by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 06</span>
+                        <h3 class="artwork-title">Our Names</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Maya and Isaac's names come alive in bright cyan letters, woven through a web of flowing lavender lines. A personal piece where handwriting becomes art &mdash; bold, expressive, and full of sibling love.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #26c6da;"></span>
+                            <span class="color-dot" style="background: #b39ddb;"></span>
+                            <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Painting 7 -->
+            <div class="artwork-card featured" onclick="openLightbox(6)">
+                <div class="artwork-image-wrap">
+                    <img src="assets/art/painting7.webp" alt="Light Scribble by Maya Ductan" loading="lazy">
+                </div>
+                <div class="artwork-info">
+                    <span class="artwork-number">No. 07</span>
+                    <h3 class="artwork-title">Light Scribble</h3>
+                    <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                    <p class="artwork-desc">Translucent ribbons of yellow, red, blue, purple, and green crisscross on a luminous white canvas. Each stroke glows like light passing through stained glass &mdash; airy, weightless, and full of movement. A study in how colors interact when they overlap and play.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background: #ffeb3b;"></span>
+                        <span class="color-dot" style="background: #ef5350;"></span>
+                        <span class="color-dot" style="background: #42a5f5;"></span>
+                        <span class="color-dot" style="background: #ab47bc;"></span>
+                        <span class="color-dot" style="background: #8bc34a;"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Painting 8 -->
+            <div class="artwork-card featured" onclick="openLightbox(7)">
+                <div class="artwork-info">
+                    <span class="artwork-number">No. 08</span>
+                    <h3 class="artwork-title">The Beach</h3>
+                    <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                    <p class="artwork-desc">A bold, sun-drenched seascape where a golden sun blazes in the corner and a bright yellow shoreline stretches across the canvas. Deep blue ocean meets deep blue sky &mdash; a simple, powerful composition that captures the feeling of standing at the water's edge on a perfect day.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background: #2196f3;"></span>
+                        <span class="color-dot" style="background: #ffeb3b;"></span>
+                        <span class="color-dot" style="background: #1976d2;"></span>
+                    </div>
+                </div>
+                <div class="artwork-image-wrap">
+                    <img src="assets/art/painting8.webp" alt="The Beach by Maya Ductan" loading="lazy">
+                </div>
+            </div>
+            <!-- Pair: Paintings 9 & 10 -->
+            <div class="gallery-pair">
+                <div class="artwork-card" onclick="openLightbox(8)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting9.webp" alt="I Love You Mom by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 09</span>
+                        <h3 class="artwork-title">I Love You, Mom</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Three bright blue hearts float beneath hand-painted words that say it all &mdash; "I love you." Soft lavender scribbles bloom from the center heart like a burst of emotion. A tender love letter from daughter to mother, written in color.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #e53935;"></span>
+                            <span class="color-dot" style="background: #42a5f5;"></span>
+                            <span class="color-dot" style="background: #b39ddb;"></span>
+                            <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openLightbox(9)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting10.webp" alt="Blank Sheet by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 10</span>
+                        <h3 class="artwork-title">Blank Sheet</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Delicate sky-blue outlines of stars and hearts scatter across a clean white canvas &mdash; a six-pointed star, a five-pointed star, a diamond sparkle, and hearts big and small. Minimal and precise, like a page from a young artist's sketchbook of favorite shapes.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #29b6f6;"></span>
+                            <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Painting 11 -->
+            <div class="artwork-card featured" onclick="openLightbox(10)">
+                <div class="artwork-image-wrap">
+                    <img src="assets/art/painting11.webp" alt="Sky Kingdom by Maya Ductan" loading="lazy">
+                </div>
+                <div class="artwork-info">
+                    <span class="artwork-number">No. 11</span>
+                    <h3 class="artwork-title">Sky Kingdom</h3>
+                    <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                    <p class="artwork-desc">A sprawling scene set against a dreamy sky-blue background. A giant blue heart holds a glowing white compass star at its center, while lightning bolts crackle in dark blue and golden yellow. A red heart, white clouds, and a golden star complete this magical kingdom in the sky &mdash; bold, imaginative, and full of adventure.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background: #81d4fa;"></span>
+                        <span class="color-dot" style="background: #1565c0;"></span>
+                        <span class="color-dot" style="background: #ffeb3b;"></span>
+                        <span class="color-dot" style="background: #e53935;"></span>
+                        <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Painting 12 -->
+            <div class="artwork-card featured" onclick="openLightbox(11)">
+                <div class="artwork-info">
+                    <span class="artwork-number">No. 12</span>
+                    <h3 class="artwork-title">Blood Kingdom</h3>
+                    <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                    <p class="artwork-desc">A giant cyan heart sweeps across a blazing red canvas, sheltering a golden speech bubble and a six-pointed star like treasures inside a valentine. A bold blue diagonal stroke cuts through the composition with confident energy &mdash; love, shapes, and color colliding on a fiery backdrop.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background: #e53935;"></span>
+                        <span class="color-dot" style="background: #26c6da;"></span>
+                        <span class="color-dot" style="background: #fdd835;"></span>
+                        <span class="color-dot" style="background: #42a5f5;"></span>
+                    </div>
+                </div>
+                <div class="artwork-image-wrap">
+                    <img src="assets/art/painting12.webp" alt="Blood Kingdom by Maya Ductan" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Pair: Paintings 13 & 14 -->
+            <div class="gallery-pair">
+                <div class="artwork-card" onclick="openLightbox(12)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting13.webp" alt="Star Fortress by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 13</span>
+                        <h3 class="artwork-title">Star Fortress</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Red and yellow geometric stars overlap on a bright blue sky, with bold lime-green strokes crashing down like lightning. Hearts float at the center &mdash; a white one nestled among red shapes &mdash; while angular lines create a layered fortress of color and geometry.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #2196f3;"></span>
+                            <span class="color-dot" style="background: #e53935;"></span>
+                            <span class="color-dot" style="background: #fdd835;"></span>
+                            <span class="color-dot" style="background: #c6ff00;"></span>
+                            <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openLightbox(13)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting14.webp" alt="Shape Garden by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 14</span>
+                        <h3 class="artwork-title">Shape Garden</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">A sun-drenched yellow canvas bursting with hearts, stars, and geometric shapes in every size. Teal hearts bloom like flowers, red six-pointed stars stand guard, and a giant blue star stretches across the scene &mdash; Maya's most ambitious composition yet, a whole universe of favorite shapes.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #fdd835;"></span>
+                            <span class="color-dot" style="background: #00897b;"></span>
+                            <span class="color-dot" style="background: #2196f3;"></span>
+                            <span class="color-dot" style="background: #e53935;"></span>
+                            <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Painting 15 -->
+            <div class="artwork-card featured" onclick="openLightbox(14)">
+                <div class="artwork-image-wrap">
+                    <img src="assets/art/painting15.webp" alt="Hearts &amp; Red by Maya Ductan" loading="lazy">
+                </div>
+                <div class="artwork-info">
+                    <span class="artwork-number">No. 15</span>
+                    <h3 class="artwork-title">Hearts &amp; Red</h3>
+                    <p class="artwork-medium">Digital Drawing &middot; 2026</p>
+                    <p class="artwork-desc">A bold red canvas overflowing with hearts of every size, drawn in sweeping cyan lines. Two giant hearts embrace each other while tiny hearts float above like butterflies &mdash; a love letter in pure color. Maya's most confident composition yet, proving that sometimes one shape and two colors are all you need to say everything.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background: #e53935;"></span>
+                        <span class="color-dot" style="background: #00bcd4;"></span>
+                        <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Pair: Paintings 16 & 17 -->
+            <div class="gallery-pair">
+                <div class="artwork-card" onclick="openLightbox(15)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting16.webp" alt="Twin Stars by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 16</span>
+                        <h3 class="artwork-title">Twin Stars</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Two enormous golden stars stand side by side against a brilliant sky-blue canvas, their sharp points interlocking like a cosmic embrace. Soft white speech bubbles float above like clouds whispering secrets &mdash; a bold, geometric composition that turns simple shapes into a conversation between giants.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #29b6f6;"></span>
+                            <span class="color-dot" style="background: #fdd835;"></span>
+                            <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openLightbox(16)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting17.webp" alt="Color Tornado by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 17</span>
+                        <h3 class="artwork-title">Color Tornado</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">A swirling frenzy of red, blue, and golden yellow strokes crash and overlap across a light sky-blue canvas. Every inch is alive with movement &mdash; loops, arcs, and zigzags tangling together like a tornado made of pure color. Maya's most energetic abstract piece yet.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #e53935;"></span>
+                            <span class="color-dot" style="background: #42a5f5;"></span>
+                            <span class="color-dot" style="background: #fdd835;"></span>
+                            <span class="color-dot" style="background: #81d4fa;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Painting 18 -->
+            <div class="artwork-card featured" onclick="openLightbox(17)">
+                <div class="artwork-image-wrap">
+                    <img src="assets/art/painting18.webp" alt="Red Universe by Maya Ductan" loading="lazy">
+                </div>
+                <div class="artwork-info">
+                    <span class="artwork-number">No. 18</span>
+                    <h3 class="artwork-title">Red Universe</h3>
+                    <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                    <p class="artwork-desc">A blazing red canvas alive with hidden energy &mdash; delicate white swirls trace mysterious paths across the surface like comets, while tiny cyan sparks and speckles shimmer like distant stars. Bold and atmospheric, this piece transforms a single dominant color into an entire universe of texture and light.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background: #e53935;"></span>
+                        <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                        <span class="color-dot" style="background: #26c6da;"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Pair: Paintings 19 & 20 -->
+            <div class="gallery-pair">
+                <div class="artwork-card" onclick="openLightbox(18)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting19.webp" alt="Red &amp; Blue Tangled Ribbons by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 19</span>
+                        <h3 class="artwork-title">Red &amp; Blue Tangled Ribbons</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">A dense web of blue strokes weaves across a sky-blue canvas like ocean currents colliding, while bold red lines cut through the waves with dramatic flair. Layer upon layer of tangled energy creates a piece that feels alive with movement &mdash; a storm captured mid-swirl.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #1e88e5;"></span>
+                            <span class="color-dot" style="background: #64b5f6;"></span>
+                            <span class="color-dot" style="background: #ef5350;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openLightbox(19)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting20.webp" alt="Sky Heart by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 20</span>
+                        <h3 class="artwork-title">Sky Heart</h3>
+                        <p class="artwork-medium">Digital Drawing &middot; 2026</p>
+                        <p class="artwork-desc">A giant golden heart floats beside a purple four-point star on a calm sky-blue canvas &mdash; clean, confident lines that show real shape control. Simple and elegant, this piece captures the two shapes Maya loves most, drawn with the steady hand of an artist finding her style.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #ffeb3b;"></span>
+                            <span class="color-dot" style="background: #ab47bc;"></span>
+                            <span class="color-dot" style="background: #81d4fa;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pair: Paintings 21 & 22 -->
+            <div class="gallery-pair">
+                <div class="artwork-card" onclick="openLightbox(20)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting21.webp" alt="Scribbles by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 21</span>
+                        <h3 class="artwork-title">Scribbles</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Sweeping waves of deep blue and soft sky blue crash across the canvas in bold, rhythmic strokes &mdash; layers of color blending and overlapping like the ocean meeting the sky. A monochrome masterpiece that proves you only need one color family to create something full of depth and motion.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #1565c0;"></span>
+                            <span class="color-dot" style="background: #42a5f5;"></span>
+                            <span class="color-dot" style="background: #b3e5fc;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openLightbox(21)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting22.webp" alt="Starry Heart by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 22</span>
+                        <h3 class="artwork-title">Starry Heart</h3>
+                        <p class="artwork-medium">Digital Drawing &middot; 2026</p>
+                        <p class="artwork-desc">A giant sky-blue heart takes center stage, its bold outline cradling a constellation of hand-drawn stars &mdash; six-pointed, four-pointed, and classic five-pointed stars scatter across the canvas like a night sky made of shapes. Clean white lines on a soft blue background give this piece an airy, dreamy calm that feels like looking up at the sky and seeing love written in the stars.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #81d4fa;"></span>
+                            <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                            <span class="color-dot" style="background: #4fc3f7;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Painting 23 -->
+            <div class="artwork-card featured" onclick="openLightbox(22)">
+                <div class="artwork-image-wrap">
+                    <img src="assets/art/painting23.webp" alt="Dad by Maya Ductan" loading="lazy">
+                </div>
+                <div class="artwork-info">
+                    <span class="artwork-number">No. 23</span>
+                    <h3 class="artwork-title">Dad</h3>
+                    <p class="artwork-medium">Digital Drawing &middot; 2026</p>
+                    <p class="artwork-desc">Maya's first full portrait &mdash; a smiling figure in all black with dark hair, round face, and a big welcoming grin waves hello from a clean white canvas. A speech bubble reads &ldquo;Hi!&rdquo; making this drawing feel like a real conversation. The bold, confident lines and expressive face show a leap into figure drawing &mdash; a heartfelt tribute from daughter to dad.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background: #2d2a26;"></span>
+                        <span class="color-dot" style="background: #d4a574;"></span>
+                        <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Painting 24 -->
+            <div class="artwork-card featured" onclick="openLightbox(23)">
+                <div class="artwork-info">
+                    <span class="artwork-number">No. 24</span>
+                    <h3 class="artwork-title">Stars</h3>
+                    <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                    <p class="artwork-desc">A massive electric-blue six-pointed star fills the canvas, layered in bold strokes that radiate energy across a soft sky-blue sky. Off to the side, a tiny sparkle and wand float quietly &mdash; a small magical companion to the giant star. Maya leans into one color and lets it sing, proving that a single shape, drawn boldly, can take up the whole sky.</p>
+                    <div class="color-dots">
+                        <span class="color-dot" style="background: #1e88e5;"></span>
+                        <span class="color-dot" style="background: #29b6f6;"></span>
+                        <span class="color-dot" style="background: #b3e5fc;"></span>
+                    </div>
+                </div>
+                <div class="artwork-image-wrap">
+                    <img src="assets/art/painting24.webp" alt="Stars by Maya Ductan" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Pair: Paintings 25 & 26 -->
+            <div class="gallery-pair">
+                <div class="artwork-card" onclick="openLightbox(24)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting25.webp" alt="Blue Storm on Red by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 25</span>
+                        <h3 class="artwork-title">Blue Storm on Red</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Ribbons of bright and deep blue whip across a blazing red canvas, layer over layer, while tiny white speckles drift through the storm like snow caught in the wind. Fierce, fast, and fearless &mdash; a companion piece to her tangled-ribbon works, this time on fire.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #e53935;"></span>
+                            <span class="color-dot" style="background: #2196f3;"></span>
+                            <span class="color-dot" style="background: #5c7fb8;"></span>
+                            <span class="color-dot" style="background: #ffffff; border-color: rgba(0,0,0,0.15);"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openLightbox(25)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting26.webp" alt="Heart Family by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 26</span>
+                        <h3 class="artwork-title">Heart Family</h3>
+                        <p class="artwork-medium">Digital Drawing &middot; 2026</p>
+                        <p class="artwork-desc">One giant red heart stretches across the whole sky-blue canvas, sheltering two smaller hearts inside &mdash; one lime green, one bright blue &mdash; side by side like siblings under one roof. Clean, steady outlines and a big warm idea: love holding love.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #81d4fa;"></span>
+                            <span class="color-dot" style="background: #e53935;"></span>
+                            <span class="color-dot" style="background: #c0ca33;"></span>
+                            <span class="color-dot" style="background: #2196f3;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pair: Paintings 27 & 28 -->
+            <div class="gallery-pair">
+                <div class="artwork-card" onclick="openLightbox(26)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting27.webp" alt="Lightning Bolts by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 27</span>
+                        <h3 class="artwork-title">Lightning Bolts</h3>
+                        <p class="artwork-medium">Digital Drawing &middot; 2026</p>
+                        <p class="artwork-desc">A giant lightning bolt streaks diagonally across a bright blue sky, and inside it three smaller bolts flash in yellow, pink, and icy white &mdash; lightning within lightning. Sharp zigzag lines drawn with real control, crackling with storm energy from corner to corner.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #039be5;"></span>
+                            <span class="color-dot" style="background: #ffeb3b;"></span>
+                            <span class="color-dot" style="background: #f48fb1;"></span>
+                            <span class="color-dot" style="background: #b3e5fc;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artwork-card" onclick="openLightbox(27)">
+                    <div class="artwork-image-wrap">
+                        <img src="assets/art/painting28.webp" alt="Paint Puddles by Maya Ductan" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <span class="artwork-number">No. 28</span>
+                        <h3 class="artwork-title">Paint Puddles</h3>
+                        <p class="artwork-medium">Digital Painting &middot; 2026</p>
+                        <p class="artwork-desc">Big, bold pools of color float on a pale aqua canvas &mdash; a red mountain, a hot-pink block, a green cloud, a splash of sky blue, and one deep navy puddle anchoring the bottom. Each shape is brushed in with thick, confident strokes, like puddles of pure paint resting side by side.</p>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #b2f7f0;"></span>
+                            <span class="color-dot" style="background: #e53935;"></span>
+                            <span class="color-dot" style="background: #ec407a;"></span>
+                            <span class="color-dot" style="background: #4caf50;"></span>
+                            <span class="color-dot" style="background: #2626d8;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <div class="section-header">
+                <p class="section-label">The Artist</p>
+                <h2 class="section-title">About Maya</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="about-avatar">
+                <span>&#127912;</span>
+            </div>
+
+            <p class="about-text">
+                Maya Ductan is a young artist currently in kindergarten who creates with <em>bold colors</em>, <em>fearless energy</em>, and an imagination that knows no limits. Her work explores abstract expression, figure drawing, and the pure joy of putting color onto canvas.
+            </p>
+
+            <div class="artist-details">
+                <div class="artist-detail">
+                    <div class="artist-detail-value">28</div>
+                    <div class="artist-detail-label">Original Works</div>
+                </div>
+                <div class="artist-detail">
+                    <div class="artist-detail-value">2026</div>
+                    <div class="artist-detail-label">Collection Year</div>
+                </div>
+                <div class="artist-detail">
+                    <div class="artist-detail-value">&infin;</div>
+                    <div class="artist-detail-label">Imagination</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="grow-section"><h2>When I grow up</h2><p>Maya’s ideas, in her own words. There is room for all of them.</p><ul class="grow-list"><li><time>March 24, 2025</time>Cooking teacher / Scientist / Actor / Pilot</li><li><time>March 27, 2025</time>Go in a sturgeon canoe / Regalia clothes</li><li><time>April 3, 2025</time>Police officer / Motorized skateboard / Paleontologist</li><li><time>April 29, 2025</time>Lawyer</li><li><time>May 21, 2025</time>Actress / Paleontologist</li><li><time>May 22, 2025</time>Detective</li><li><time>November 2, 2025</time>Inventor of puzzles that have bags — and the poster fits inside!</li><li><time>February 12, 2026</time>Scientist / Cop</li></ul></section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-name">Maya Ductan</div>
+        <p>Young Artist &middot; Made with <span class="footer-heart">&hearts;</span> &middot; 2026</p>
+        <p style="margin-top: 0.8rem; font-size: 0.8rem;"><a href="travel/" style="color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#e8d5a8'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">See every place Maya has been on her travel map &rarr;</a></p>
+        <p style="margin-top: 0.8rem; font-size: 0.8rem;"><a href="https://isaacductan.com/" style="color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#e8d5a8'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Visit little brother Isaac's gallery &rarr;</a></p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="prevImage(event)">&larr;</button>
+        <button class="lightbox-nav lightbox-next" onclick="nextImage(event)">&rarr;</button>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-caption">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-sub"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/gallery.js"></script>
+
+</body>
+</html>
